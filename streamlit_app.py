@@ -1,9 +1,9 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import requests
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+#import smtplib
+#from email.mime.text import MIMEText
+#from email.mime.multipart import MIMEMultipart
 
 # Load Lottie Animations
 def load_lottieurl(url: str):
@@ -162,37 +162,37 @@ if selected == "Publications":
 if selected == "Contact":
     st.title("📬 Get in Touch")
     st.write("Feel free to leave me a message!")
-    with st.form(key='contact_form'):
-        user_name = st.text_input("Your Name")
-        user_email = st.text_input("Your Email")
-        user_message = st.text_area("Your Message")
-        submit_button = st.form_submit_button("Send Message")
+    #with st.form(key='contact_form'):
+        #user_name = st.text_input("Your Name")
+        #user_email = st.text_input("Your Email")
+        #user_message = st.text_area("Your Message")
+        #submit_button = st.form_submit_button("Send Message")
         
-        if submit_button:
-            if user_name and user_email and user_message:
-                try:
-                    sender_email = "your_email@example.com"
-                    receiver_email = "parthan@example.com"
-                    password = "your_password"
+        #if submit_button:
+            #if user_name and user_email and user_message:
+                #try:
+                    #sender_email = "your_email@example.com"
+                    #receiver_email = "parthan@example.com"
+                    #password = "your_password"
                     
-                    message = MIMEMultipart()
-                    message['From'] = sender_email
-                    message['To'] = receiver_email
-                    message['Subject'] = f"New Message from {user_name}"
+                    #message = MIMEMultipart()
+                    #message['From'] = sender_email
+                    #message['To'] = receiver_email
+                    #message['Subject'] = f"New Message from {user_name}"
                     
-                    body = f"Name: {user_name}\nEmail: {user_email}\nMessage: {user_message}"
-                    message.attach(MIMEText(body, 'plain'))
+                    #body = f"Name: {user_name}\nEmail: {user_email}\nMessage: {user_message}"
+                    #message.attach(MIMEText(body, 'plain'))
                     
-                    with smtplib.SMTP('smtp.example.com', 587) as server:
-                        server.starttls()
-                        server.login(sender_email, password)
-                        server.send_message(message)
+                    #with smtplib.SMTP('smtp.example.com', 587) as server:
+                        #server.starttls()
+                        #server.login(sender_email, password)
+                        #server.send_message(message)
                     
-                    st.success("Your message has been sent successfully!")
-                except Exception as e:
-                    st.error(f"Failed to send message: {e}")
-            else:
-                st.warning("Please fill in all fields before submitting.")
+                    #st.success("Your message has been sent successfully!")
+                #except Exception as e:
+                    #st.error(f"Failed to send message: {e}")
+            #else:
+                #st.warning("Please fill in all fields before submitting.")
 
 
 # Footer
