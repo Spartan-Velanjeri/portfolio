@@ -2,7 +2,5 @@
 streamlit
 streamlit_option_menu
 requests
-smtplib
-email
 pandas
 matplotlib
