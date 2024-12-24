@@ -230,13 +230,13 @@ if selected == "About Me":
             "title": "Runners-Up, Bots and Bento Competition (IEEE ICRA 2024, Yokohama, Japan)",
             "description": "Built an autonomous physical robot in three days from scratch.",
             "link": "https://www.linkedin.com/posts/parthan-m_we-have-a-winner-after-4-intense-days-activity-7199365789567569920-XTNy?utm_source=share&utm_medium=member_desktop",
-            "image": "https://media.licdn.com/dms/image/v2/D4D22AQHCr8wDNDvVGA/feedshare-shrink_1280/feedshare-shrink_1280/0/1715961601351?e=1738195200&v=beta&t=DfYHEETxZu_zyUYeT0dO6vS2qdftT3wPKwx22hUGB0o"
+            "image": "https://raw.githubusercontent.com/Spartan-Velanjeri/spartan-velanjeri.github.io/refs/heads/main/images/a1.jpeg"
         },
         {
             "title": "Runners-Up, CTO Pitch Battle 2023 (Deutsche Telekom)",
             "description": "Developed 'Deutsche Telespots' to revamp telephone booths into data + service centers.",
             "link": "https://www.linkedin.com/posts/nouranelsherbiny_chieftomorrowofficer-questionsoftomorrow-ugcPost-7129432144312983552-GrGV?utm_source=share&utm_medium=member_desktop",
-            "image": "https://media.licdn.com/dms/image/v2/D4E22AQEq-v9OnN7W1g/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1699789080345?e=1738195200&v=beta&t=7gCi5A6k-EAZ0d0uoICPYtEbn_RCW-UtsDxRH0Infcg"
+            "image": "https://raw.githubusercontent.com/Spartan-Velanjeri/spartan-velanjeri.github.io/refs/heads/main/images/a2.jpeg"
         }
     ]
 
