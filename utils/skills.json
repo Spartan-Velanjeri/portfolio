@@ -1,0 +1,6 @@
+{
+    "languages": ["Python", "C++"],
+    "frameworks": ["PyTorch", "TensorFlow", "OpenCV", "gRPC", "REST API", "PCL"],
+    "tools": ["Docker", "GitHub Actions", "Linux", "MQTT", "Embedded Systems", "Autodesk Fusion 360"],
+    "robotics": ["ROS2", "ROS1", "Gazebo", "MoveIt!", "Nav2",  "Gazebo Sim", "Carla Driving Simulator", "URSim"]
+}

@@ -1,0 +1,39 @@
+[
+    {
+        "title": "Computer Vision Thesis Student at Hexafarms, Berlin",
+        "duration": "Jul 2024 - Dec 2024",
+        "description": [
+            "Implemented Cutting-edge Monocular Depth Estimation and Deep learning based Stereo Matching.",
+            "Specialized in Computer Vision applications for Greenhouse solutions."
+        ],
+        "skills": ["PyTorch", "OpenCV", "Embedded Systems"]
+    },
+    {
+        "title": "Robotics Software Developer (R&D Intern) at Robert Bosch Power Tools GmbH, Leinfelden",
+        "duration": "Oct 2023 - Mar 2024",
+        "description": [
+            "Migrated Entire Robot Software Stack from ROS Galactic to Humble encompassing Robot Navigation and Manipulation.",
+            "Implemented CI/CD tools for robotics software deployment."
+        ],
+        "skills": ["ROS2", "Gazebo Sim", "URSim", "MoveIt!", "Nav2", "Docker"]
+    },
+    {
+        "title": "Computer Vision Werkstudent at Artificient Mobility Intelligence, Aachen",
+        "duration": "Nov 2022 - Sept 2023",
+        "description": [
+            "Developed a vision-based end-to-end scoring pipeline to assess car drivers and help them drive safe and cut down their insurance premium. Tested with both simulation and real-world data.",
+            "Implemented Privacy based Deep learning model which can do detection and depth estimation of the Lane and Traffic participants. Tested with Carla Simulator and the real-world data."
+        ],
+        "skills": ["Carla Driving Simulator", "PyTorch","Tensorflow","OpenCV","Docker"]
+    },
+
+    {
+        "title": "Robotics Research Associate at PES Centre for Robotics, Automation and Intelligent Systems, Bengaluru",
+        "duration": "Aug 2019 - Sept 2021",
+        "description": [
+            "Initiated Project Quadbionics, a unique use of Supernumerary Robotic Limbs to aid Disaster Relief Operatives in managing debris",
+            "Implemented Vision and Path planning workflow for the manipulator"
+        ],
+        "skills": ["ROS1", "MoveIt!", "Gazebo Sim", "OpenCV","PCL", "Autodesk Fusion 360"]
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "title": "M.Sc. Robotic Systems Engineering at RWTH Aachen University, Aachen",
+        "duration": "Oct 2021 - Present",
+        "description": [
+            "Courses included: Advanced Robotics Kinematics and Dynamics, Computer Vision, Machine Learning, Reinforcement Learning",
+            "Awared RWTH Student Project Grant in 2023 for developing a deep learning model for Solar Soiling Detection using Aerial Vehicles."
+        ],
+        "GPA":"2.7 (German Scale)"
+    },
+
+    {
+        "title": "Bachelors in Mechanical Engineering at PES University, Bangalore",
+        "duration": "Aug 2016 - Aug 2020",
+        "description": [
+            "Specialization in Aerospace Engineering. Courses included: Drone Computing, Propulsion, Hydraulics and Pneumatics",
+            "Awarded Merit Scholarships for Top 20% students.",
+            "Granted Patent for a concept of using multiple drones to integrate together to form one flying object to pick up heavier payloads and malfunctioning drones. Check the Publications section for the patent"
+        ],
+        "GPA": "8.43/10"
+    }
+]

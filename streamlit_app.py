@@ -1,28 +1,52 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import requests
-#import smtplib
-#from email.mime.text import MIMEText
-#from email.mime.multipart import MIMEMultipart
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 import json
 
 import feedparser
 from bs4 import BeautifulSoup
+import random
 
-# Load Projects from JSON
-def load_projects():
-    with open('projects.json', 'r') as file:
-        return json.load(file)
-    
-# Load Skills from JSON
-def load_skills():
-    with open('skills.json', 'r') as file:
+# Load JSON data
+def load_json(file_path):
+    with open(file_path, 'r') as file:
         return json.load(file)
 
-# Load skills from JSON
-skills = load_skills()
+# Predefined Colors for Skill Boxes (Dark Theme Friendly)
+SKILL_COLORS = [
+    "#4DA8DA",  # Sky Blue (matches primaryColor)
+    "#6AAFE6",  # Soft Blue
+    "#1B98E0",  # Bright Blue
+    "#2A9D8F",  # Deep Teal
+    "#E76F51",  # Warm Red
+    "#F4A261",  # Muted Orange
+    "#264653",  # Dark Teal
+    "#8D99AE",  # Steel Blue
+    "#457B9D",  # Deep Sky Blue
+    "#F4BFDB",  # Muted Pink
+    "#9C6644",  # Earthy Brown
+    "#2E4053",  # Dark Slate
+    "#556270",  # Charcoal Blue
+    "#6C757D",  # Neutral Grey
+    "#A53860",  # Burgundy
+    "#3A506B",  # Midnight Blue
+    "#2C3E50",  # Navy Blue
+    "#0F4C75"   # Deep Ocean Blue
+]
 
+
+# Skill-to-Color Mapping
+skill_color_map = {}
+
+# Function to get consistent color for a skill
+def get_skill_color(skill):
+    if skill not in skill_color_map:
+        skill_color_map[skill] = SKILL_COLORS[len(skill_color_map) % len(SKILL_COLORS)]
+    return skill_color_map[skill]
 
 # Fetch Medium Blogs with Thumbnails
 def fetch_medium_blogs(username, max_posts=5):
@@ -63,6 +87,18 @@ st.set_page_config(
     page_icon="🤖",
     layout="wide"
 )
+
+# Load skills from JSON
+skills = load_json('utils/skills.json')
+
+# Load projects from JSON
+projects = load_json('utils/projects.json')
+
+# Load education from JSON
+education_data = load_json('utils/education.json')
+
+# Load experience from JSON
+experience_data = load_json('utils/experience.json')
 
 # Sidebar with Image, Social Links, and Languages
 with st.sidebar:
@@ -135,61 +171,103 @@ if selected == "About Me":
     🚀 Bridging the gap between imagination and innovation, I’m Parthan Manisekaran – a robotics engineer and software developer with hands-on expertise in AI, computer vision, and embedded systems. From building autonomous robots for greenhouse monitoring to optimizing CI/CD pipelines for robotics software, I thrive on solving complex challenges with smart technology. With roots in mechanical engineering and wings in deep learning, I craft impactful solutions that drive efficiency and innovation. 🌟
     """)
 
-    # Achievement data
+    # Style for uniform height
+    card_style = """
+    <style>
+        .achievement-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background-color: #1B263B;
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .achievement-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .achievement-card h3 {
+            color: #E0E1DD;
+            font-size: 1rem;
+        }
+        .achievement-card p {
+            color: #E0E1DD;
+            font-size: 0.9rem;
+            margin: 10px 0;
+        }
+        .achievement-card a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #4DA8DA;
+            margin-top: auto;
+        }
+        .achievement-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+    """
+    st.markdown(card_style, unsafe_allow_html=True)
+
+    # Achievement Data
     achievements = [
         {
             "title": "Runners-Up, Bots and Bento Competition (IEEE ICRA 2024, Yokohama, Japan)",
             "description": "Built an autonomous physical robot in three days from scratch.",
-            "link": "https://www.linkedin.com/posts/parthan-m_we-have-a-winner-after-4-intense-days-activity-7199365789567569920-XTNy?utm_source=share&utm_medium=member_desktop"
+            "link": "https://www.linkedin.com/posts/parthan-m_we-have-a-winner-after-4-intense-days-activity-7199365789567569920-XTNy?utm_source=share&utm_medium=member_desktop",
+            "image": "https://media.licdn.com/dms/image/v2/D4D22AQHCr8wDNDvVGA/feedshare-shrink_1280/feedshare-shrink_1280/0/1715961601351?e=1738195200&v=beta&t=DfYHEETxZu_zyUYeT0dO6vS2qdftT3wPKwx22hUGB0o"
         },
         {
-            "title": "RWTH Student Project Grant 2023",
-            "description": "Built a deep learning model for Solar Soiling Detection using an Aerial Vehicle.",
-            "link": "https://www.linkedin.com/posts/vsranjitroshan_scholarship-ceremony-university-activity-7080546301062344704-szaj?utm_source=share&utm_medium=member_desktop"
-        },
-        {
-            "title": "Runners-Up, CTO Pitch Battle (Deutsche Telekom)",
+            "title": "Runners-Up, CTO Pitch Battle 2023 (Deutsche Telekom)",
             "description": "Developed 'Deutsche Telespots' to revamp telephone booths into data + service centers.",
-            "link": "https://www.linkedin.com/posts/nouranelsherbiny_chieftomorrowofficer-questionsoftomorrow-ugcPost-7129432144312983552-GrGV?utm_source=share&utm_medium=member_desktop"
+            "link": "https://www.linkedin.com/posts/nouranelsherbiny_chieftomorrowofficer-questionsoftomorrow-ugcPost-7129432144312983552-GrGV?utm_source=share&utm_medium=member_desktop",
+            "image": "https://media.licdn.com/dms/image/v2/D4E22AQEq-v9OnN7W1g/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1699789080345?e=1738195200&v=beta&t=7gCi5A6k-EAZ0d0uoICPYtEbn_RCW-UtsDxRH0Infcg"
         }
     ]
 
-    # Display achievements in a grid
-    st.header("🏆 Notable Achievements")
-    cols = st.columns(3)
+    # Display achievements side-by-side
+    st.header("🏆 Recent Achievements")
+
+    cols = st.columns(2)
 
     for col, achievement in zip(cols, achievements):
         with col:
-            st.write(f"**{achievement['title']}**")
-            st.write(achievement['description'])
             st.markdown(
                 f"""
-                <div style='border: 1px solid #ccc; border-radius: 8px; padding: 10px; text-align: center;'>
-                    <a href="{achievement['link']}" target="_blank" style="text-decoration: none;">
-                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" 
-                            alt="LinkedIn Logo" 
-                            style="width:50px; margin-bottom:10px;">
-                        <p style="font-weight: bold; color: #0077B5;">View on LinkedIn</p>
-                    </a>
+                <div class='achievement-card'>
+                    <img src="{achievement['image']}" alt="Achievement Image">
+                    <h3>{achievement['title']}</h3>
+                    <p>{achievement['description']}</p>
+                    <a href="{achievement['link']}" target="_blank">🔗 View on LinkedIn</a>
                 </div>
                 """,
                 unsafe_allow_html=True
             )
 
 
-
     st.header("🧠 Skills")
-    st.write("**Languages:**")
-    st.write(" | ".join(skills["languages"]))
     
-    st.write("**Frameworks:**")
-    st.write(" | ".join(skills["frameworks"]))
+    categories = [
+        {"icon": "🐍", "title": "Languages", "skills": skills["languages"]},
+        {"icon": "🔧", "title": "Frameworks", "skills": skills["frameworks"]},
+        {"icon": "🛠️", "title": "Tools", "skills": skills["tools"]},
+        {"icon": "🤖", "title": "Robotics Frameworks", "skills": skills["robotics"]}
+    ]
     
-    st.write("**Tools:**")
-    st.write(" | ".join(skills["tools"]))
-    
-    st.write("**Robotics Frameworks:**")
-    st.write(" | ".join(skills["robotics"]))
+    for category in categories:
+        st.subheader(f"{category['icon']} {category['title']}")
+        skill_tags = " ".join([
+            f"<span style='background-color:{get_skill_color(skill)}; color:#FFFFFF; padding:6px 10px; border-radius:5px; margin:4px; display:inline-block;'>{skill}</span>"
+            for skill in category['skills']
+        ])
+        st.markdown(
+            f"<div style='margin-bottom:16px;'>{skill_tags}</div>", 
+            unsafe_allow_html=True
+        )
 
     st.header("📝 Latest Blogs from Medium")
     username = "parthanvelanjeri"  # Replace with your Medium username
@@ -210,46 +288,56 @@ if selected == "About Me":
 # Experience Section
 if selected == "Experience":
     st.title("💼 Experience")
-    st.subheader("Computer Vision Thesis Student at Hexafarms, Berlin")
-    st.write("**Duration:** Jul 2024 - Dec 2024")
-    st.write("- Working on Monocular Depth Estimation and Deep learning based Stereo Matching.")
-    st.write("- Specializing in Computer Vision applications for Greenhouse solutions.")
-    st.write("**Skills:** PyTorch, OpenCV, RPi + Stereo Vision")
+    
+    for exp in experience_data:
+        st.subheader(exp["title"])
+        st.write(f"**Duration:** {exp['duration']}")
+        
+        # Display Description
+        for desc in exp['description']:
+            st.write(f"- {desc}")
+        
+        # Display Skills with Consistent Colors
+        st.write("**Skills:**")
+        skill_tags = " ".join([
+            f"<span style='background-color:{get_skill_color(skill)}; color:#FFFFFF; padding:4px 8px; border-radius:5px; margin-right:4px; display:inline-block; margin-bottom:4px;'>{skill}</span>"
+            for skill in exp['skills']
+        ])
+        st.markdown(f"<div style='margin-top:8px;'>{skill_tags}</div>", unsafe_allow_html=True)
+        
+        st.markdown("---")
 
-    st.subheader("Robotics Software Developer (R&D Intern) at Robert Bosch Power Tools GmbH, Leinfelden")
-    st.write("**Duration:** Oct 2023 - Mar 2024")
-    st.write("- Migrated Robot Software Stack from ROS Galactic to Humble.")
-    st.write("- Implemented CI/CD tools for robotics software deployment.")
-    st.write("**Skills:** ROS2, Gazebo Sim, URSim, MoveIt!, Nav2, Docker")
+
+
 
 # Education Section
 if selected == "Education":
     st.title("🎓 Education")
-    st.subheader("M.Sc. Robotic Systems Engineering at RWTH Aachen University, Aachen")
-    st.write("**Duration:** Oct 2021 - Present")
-    st.write("- Courses: Robotic Sensor Systems, Computer Vision, Machine Learning.")
-
-    st.subheader("Bachelors in Mechanical Engineering at PES University, Bangalore")
-    st.write("**Duration:** Aug 2016 - Aug 2020")
-    st.write("- Specialization in Aerospace Engineering.")
-    st.write("- Awarded Merit Scholarships for Top 20% students.")
-    st.write("- Patent: Multi-drone integration for heavy payloads.")
-    st.write("**GPA:** 8.43/10")
+    for edu in education_data:
+        st.subheader(edu["title"])
+        st.write(f"**Duration:** {edu['duration']}")
+        for desc in edu['description']:
+            st.write(f"- {desc}")
+        if "GPA" in edu:
+            st.write(f"**GPA:** {edu['GPA']}")
 
 # Projects Section
 if selected == "Projects":
     st.title("🛠️ Projects")
     st.write("Filter projects by skills:")
-    all_skills = skills["languages"] + skills["frameworks"] + skills["tools"] + skills["robotics"]
+    all_skills = sorted(set(skill for project in projects for skill in project['skills']))
+
+        
     selected_skills = st.multiselect(
         "Select Skills:",
         options=all_skills,
         default=[]
     )
+        
     
-    projects = load_projects()
     filtered_projects = [p for p in projects if set(selected_skills).issubset(p['skills'])] if selected_skills else projects
     
+    # Display projects in grid format
     for i in range(0, len(filtered_projects), 3):
         cols = st.columns(3)
         for col, project in zip(cols, filtered_projects[i:i+3]):
@@ -258,10 +346,15 @@ if selected == "Projects":
                 st.write(f"**{project['title']} ({project['year']})**")
                 st.write(project['description'])
                 if 'link' in project:
-                    st.markdown(f"[GitHub Repository]({project['link']})")
+                    st.markdown(f"[🔗 GitHub Repository]({project['link']})")
                 st.write("**Key Skills:**")
-                skill_tags = " ".join([f"<span style='background-color:#e1bee7; color:#000; padding:4px 8px; border-radius:5px; margin-right:4px;'>{skill}</span>" for skill in project['skills']])
-                st.markdown(skill_tags, unsafe_allow_html=True)
+                skill_tags = " ".join([
+                    f"<span style='background-color:{get_skill_color(skill)}; color:#FFFFFF; padding:4px 8px; border-radius:5px; margin-right:4px; display:inline-block; margin-bottom:4px;'>{skill}</span>"
+                    for skill in project['skills']
+                ])
+                st.markdown(f"<div style='margin-top:8px;'>{skill_tags}</div>", unsafe_allow_html=True)
+
+
 
 # Publications Section
 if selected == "Publications":
@@ -292,38 +385,23 @@ if selected == "Publications":
 # Contact Section
 if selected == "Contact":
     st.title("📬 Get in Touch")
-    st.write("Feel free to leave me a message!")
-    #with st.form(key='contact_form'):
-        #user_name = st.text_input("Your Name")
-        #user_email = st.text_input("Your Email")
-        #user_message = st.text_area("Your Message")
-        #submit_button = st.form_submit_button("Send Message")
-        
-        #if submit_button:
-            #if user_name and user_email and user_message:
-                #try:
-                    #sender_email = "your_email@example.com"
-                    #receiver_email = "parthan@example.com"
-                    #password = "your_password"
-                    
-                    #message = MIMEMultipart()
-                    #message['From'] = sender_email
-                    #message['To'] = receiver_email
-                    #message['Subject'] = f"New Message from {user_name}"
-                    
-                    #body = f"Name: {user_name}\nEmail: {user_email}\nMessage: {user_message}"
-                    #message.attach(MIMEText(body, 'plain'))
-                    
-                    #with smtplib.SMTP('smtp.example.com', 587) as server:
-                        #server.starttls()
-                        #server.login(sender_email, password)
-                        #server.send_message(message)
-                    
-                    #st.success("Your message has been sent successfully!")
-                #except Exception as e:
-                    #st.error(f"Failed to send message: {e}")
-            #else:
-                #st.warning("Please fill in all fields before submitting.")
+    st.write("Feel free to reach out directly via email!")
+
+    st.markdown(
+        """
+        <div style='text-align: center; margin-top: 20px;'>
+            <a href="mailto:parthanmanisekaran@gmail.com" 
+               style="text-decoration: none;">
+                <button style="background-color:#4CAF50; color:white; padding:10px 20px; 
+                               text-align:center; border:none; border-radius:5px; cursor:pointer;
+                               font-size:16px;">
+                    📧 Contact Me via Email
+                </button>
+            </a>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 
 # Footer

@@ -4,13 +4,13 @@
         "title": "ROS2 Autogen",
         "skills": ["Python","ROS2"],
         "year": "2024",
-        "image": "assets/ros_autogen.gif",
+        "image": "https://raw.githubusercontent.com/Spartan-Velanjeri/ROS2_Autogen/refs/heads/main/utils/ros_autogen.gif",
         "description": "Automated ROS2 node deployment.",
         "link": "https://github.com/Spartan-Velanjeri/ROS2_Autogen"
     },
     {
         "title": "UR-MiR Mobile Manipulator",
-        "skills": ["Python","ROS2", "Docker"],
+        "skills": ["Python","ROS2", "Docker", "Nav2", "MoveIt!"],
         "year": "2024",
         "image": "https://raw.githubusercontent.com/Spartan-Velanjeri/UR-MiR-mobile-manipulator/main/mobile_manipulator.png",
         "description": "Control framework for mobile manipulators.",
@@ -20,7 +20,7 @@
         "title": "ROS2_NodeWeaver",
         "skills": ["Python","ROS2"],
         "year": "2024",
-        "image": "assets/NodeWeaver.png",
+        "image": "https://raw.githubusercontent.com/Spartan-Velanjeri/ROS2_NodeWeaver/refs/heads/main/NodeWeaver.png",
         "description": "Node Flow based GUI For ROS2.",
         "link": "https://github.com/Spartan-Velanjeri/ROS2_NodeWeaver"
     },
