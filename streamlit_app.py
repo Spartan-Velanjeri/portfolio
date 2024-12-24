@@ -4,17 +4,33 @@ import requests
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
+import os
 import json
 
 import feedparser
 from bs4 import BeautifulSoup
 import random
 
+
+# Page Configuration
+st.set_page_config(
+    page_title="Parthan Manisekaran Portfolio",
+    page_icon="🤖",
+    layout="wide"
+)
+
 # Load JSON data
-def load_json(file_path):
-    with open(file_path, 'r') as file:
-        return json.load(file)
+def load_json(file_name):
+    try:
+        base_path = os.path.dirname(__file__)  # Get the current script's directory
+        file_path = os.path.join(base_path, 'utils', file_name)  # Construct the file path
+
+        with open(file_path, 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
+        raise FileNotFoundError(f"File {file_name} not found in utils folder.")
+    except json.JSONDecodeError:
+        raise ValueError(f"File {file_name} contains invalid JSON.")
 
 # Predefined Colors for Skill Boxes (Dark Theme Friendly)
 SKILL_COLORS = [
@@ -81,24 +97,19 @@ def load_lottieurl(url: str):
     return r.json()
 
 
-# Page Configuration
-st.set_page_config(
-    page_title="Parthan Manisekaran Portfolio",
-    page_icon="🤖",
-    layout="wide"
-)
+
 
 # Load skills from JSON
-skills = load_json('utils/skills.json')
+skills = load_json('skills.json')
 
 # Load projects from JSON
-projects = load_json('utils/projects.json')
+projects = load_json('projects.json')
 
 # Load education from JSON
-education_data = load_json('utils/education.json')
+education_data = load_json('education.json')
 
 # Load experience from JSON
-experience_data = load_json('utils/experience.json')
+experience_data = load_json('experience.json')
 
 # Sidebar with Image, Social Links, and Languages
 with st.sidebar:
