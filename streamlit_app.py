@@ -396,7 +396,7 @@ if selected == "Contact":
     st.markdown(
         """
         <div style='text-align: center; margin-top: 20px;'>
-            <a href="mailto:parthanmanisekaran@gmail.com" 
+            <a href="mailto:parthan.manisekaran@rwth-aachen.de" 
                style="text-decoration: none;">
                 <button style="background-color:#4CAF50; color:white; padding:10px 20px; 
                                text-align:center; border:none; border-radius:5px; cursor:pointer;
