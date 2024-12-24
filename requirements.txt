@@ -4,3 +4,4 @@ streamlit_option_menu
 requests
 feedparser
 beautifulsoup4
+json

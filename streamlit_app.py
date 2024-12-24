@@ -1,15 +1,10 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
 import requests
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 import os
 import json
-
 import feedparser
 from bs4 import BeautifulSoup
-import random
 
 
 # Page Configuration
