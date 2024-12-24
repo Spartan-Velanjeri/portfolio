@@ -1,0 +1,6 @@
+{
+    "languages": ["Python", "C++"],
+    "frameworks": ["PyTorch", "TensorFlow", "OpenCV", "gRPC", "REST API"],
+    "tools": ["Docker", "GitHub Actions", "Linux", "MQTT"],
+    "robotics": ["ROS2", "Gazebo", "MoveIt!", "Nav2"]
+}   

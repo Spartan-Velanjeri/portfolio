@@ -1,0 +1,43 @@
+[
+
+    {
+        "title": "ROS2 Autogen",
+        "skills": ["Python","ROS2"],
+        "year": "2024",
+        "image": "assets/ros_autogen.gif",
+        "description": "Automated ROS2 node deployment.",
+        "link": "https://github.com/Spartan-Velanjeri/ROS2_Autogen"
+    },
+    {
+        "title": "UR-MiR Mobile Manipulator",
+        "skills": ["Python","ROS2", "Docker"],
+        "year": "2024",
+        "image": "https://raw.githubusercontent.com/Spartan-Velanjeri/UR-MiR-mobile-manipulator/main/mobile_manipulator.png",
+        "description": "Control framework for mobile manipulators.",
+        "link": "https://github.com/Spartan-Velanjeri/UR-MiR-mobile-manipulator"
+    },
+    {
+        "title": "ROS2_NodeWeaver",
+        "skills": ["Python","ROS2"],
+        "year": "2024",
+        "image": "assets/NodeWeaver.png",
+        "description": "Node Flow based GUI For ROS2.",
+        "link": "https://github.com/Spartan-Velanjeri/ROS2_NodeWeaver"
+    },
+    {
+        "title": "dd_robot",
+        "skills": ["Python","ROS2","Nav2"],
+        "year": "2023",
+        "image": "https://raw.githubusercontent.com/Spartan-Velanjeri/dd_robot/main/doc/dd.gif",
+        "description": "Simple Differential Drive Robot to experiment sensors, navigation and algorithms",
+        "link": "https://github.com/Spartan-Velanjeri/dd_robot"
+    },
+    {
+        "title": "Cloud Based Neural Net Inference",
+        "skills": ["Python","TensorFlow", "gRPC","REST API", "MQTT"],
+        "year": "2023",
+        "image": "assets/cloud.png",
+        "description": "Exploring MQTT and TFServing Methodologies for offloading neural net inference tasks from automated vehicles to cloud servers.",
+        "link": "https://github.com/Spartan-Velanjeri/Cloud-Based-Neural-Net-Inference"
+    }
+]
